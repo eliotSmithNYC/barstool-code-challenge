@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+table,
+thead,
+tbody,
+tfoot,
+th,
+td,
+tr {
+  all: unset;
+}
+
+.App {
+  font-family: sans-serif;
+}
