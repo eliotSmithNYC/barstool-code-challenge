@@ -2,7 +2,7 @@ import React from "react";
 import BoxScoreTable from "./BoxScoreTable";
 import VersusBanner from "./VersusBanner";
 import { makeStyles } from "@material-ui/core/styles";
-import { getMLBData } from "./api";
+import { parseMLBData } from "./api";
 
 const useStyles = makeStyles({
   root: {
@@ -12,12 +12,10 @@ const useStyles = makeStyles({
   }
 });
 
-const data = getMLBData();
 
-export default function BoxScore() {
-  const classes = useStyles();
-
+export default function BoxScore({ data }) {
   const { teamRecords, homeTeamLastName, awayTeamLastName, status } = data;
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>

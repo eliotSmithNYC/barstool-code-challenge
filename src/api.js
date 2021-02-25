@@ -1,6 +1,6 @@
 import _ from "lodash";
 import moment from "moment-timezone";
-let mlbData = require("./MLB.JSON");
+import mlbData from "./MLB";
 
 // status upComing, inProgress, completed, extraInnings
 
@@ -33,8 +33,15 @@ const getStatusText = (status, startTime) => {
   }
 };
 
-export const getMLBData = () => {
-  const realScores = fillInScores([1], 9);
+export const fetchMlbData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(parseMLBData())
+    }, 1000)
+  })
+}
+
+export const parseMLBData = () => {
   const {
     away_team: {
       abbreviation: awayTeamAbbreviation,
@@ -55,7 +62,7 @@ export const getMLBData = () => {
     away_batter_totals: { runs: awayTeamRuns, hits: awayTeamHits },
     home_batter_totals: { runs: homeTeamRuns, hits: homeTeamHits },
     event_information: { status, start_date_time }
-  } = JSON.parse(mlbData);
+  } = mlbData;
   return {
     awayTeamAbbreviation,
     homeTeamAbbreviation,
