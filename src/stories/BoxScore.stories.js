@@ -50,6 +50,32 @@ const extraInningsProps = {
   homePeriodScores: [0, 2, 0, 0, 0, 0, 1, 0, 1, ''],
 }
 
+const nbaProps = {
+  awayTeamAbbreviation: 'NYK',
+  homeTeamAbbreviation: 'LAC',
+  awayTeamLastName: 'Knicks',
+  homeTeamLastName: 'Clippers',
+  awayPeriodScores: [24, 25, 30, 28],
+  homePeriodScores: [15, 23, 44, 22],
+  additionalInfo: {
+    headers: [],
+    away: [],
+    home: []
+  },
+  status: 'Final',
+  teamRecords: {
+    homeRecord: {
+      wins: 55,
+      losses: 22
+    },
+    awayRecord: {
+      wins: 54,
+      losses: 23
+    }
+  },
+  periods: 4
+};
+
 const Template = (args) => <BoxScore {...args} />;
 
 export const InProgress = Template.bind({});
@@ -89,6 +115,17 @@ ExtraInnings.args = {
     ...extraInningsProps,
   }
 };
+
+export const NbaFormat = Template.bind({});
+
+NbaFormat.args = {
+  primary: false,
+  label: 'BoxScore/ NBA',
+  data: {
+    ...nbaProps,
+  }
+};
+
 
 export default {
   title: 'Example/BoxScore',
